@@ -1,44 +1,54 @@
 import React, { useEffect, useState } from "react";
+import BattleView from "./BattleView";
 import "./App.css";
 
+// TODO: dorobic interfejs do people i data
+// TODO: do jednej funkcji
+
 function App() {
-  const [peopleCount, setPeopleCount] = useState<number>(0);
-  const [starshipsCount, setStarshipsCount] = useState<number>(0);
-  const [hasErrors, setHasErrors] = useState<boolean>(false);
+  const [peopleData, setPeopleData] = useState<any>();
+  const [starshipsData, setStarshipsData] = useState<any>();
 
-  const fetchPeople = () => {
-    fetch("https://swapi.co/api/people")
-      .then(res => res.json())
-      .then(res => setPeopleCount(res.count))
-      .catch(() => setHasErrors(true));
-  };
+  async function getStarshipsData() {
+    let results: any = [];
+    let url = "https://swapi.co/api/starships/";
 
-  const fetchStarships = () => {
-    fetch("https://swapi.co/api/starships")
-      .then(res => res.json())
-      .then(res => setStarshipsCount(res.count))
-      .catch(() => setHasErrors(true));
-  };
+    do {
+      const res = await fetch(url);
+      const data = await res.json();
+      url = data.next;
+      results = [...results, ...data.results];
+      setStarshipsData(results);
+    } while (url);
+
+    return results;
+  }
+
+  async function getPeopleData() {
+    let results: any = [];
+    let url = "https://swapi.co/api/people/";
+
+    do {
+      const res = await fetch(url);
+      const data = await res.json();
+      url = data.next;
+      results = [...results, ...data.results];
+      setPeopleData(results);
+    } while (url);
+
+    return results;
+  }
 
   useEffect(() => {
-    async function getPeopleData() {
-      await fetchPeople();
-    }
-
-    async function getStarshipsData() {
-      await fetchStarships();
-    }
-
     getPeopleData();
     getStarshipsData();
   }, []);
 
-  !!peopleCount && console.log(peopleCount);
-  !!starshipsCount && console.log(starshipsCount);
-
   return (
     <div className="App">
-      {hasErrors ? <div>cos poszlo nie tak</div> : <div>tu bedzie apka</div>}
+      {peopleData && starshipsData && (
+        <BattleView peopleData={peopleData} starshipsData={starshipsData} />
+      )}
     </div>
   );
 }
