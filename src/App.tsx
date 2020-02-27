@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BattleView from "./BattleView";
+import BattleContainer from "./BattleContainer";
 import "./App.css";
 
 function App() {
@@ -44,7 +44,10 @@ function App() {
   return (
     <div className="App">
       {peopleData && starshipsData && (
-        <BattleView peopleData={peopleData} starshipsData={starshipsData} />
+        <BattleContainer
+          peopleData={peopleData}
+          starshipsData={starshipsData}
+        />
       )}
     </div>
   );
