@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import BattleView from "./BattleView";
 import "./App.css";
 
-// TODO: dorobic interfejs do people i data
-// TODO: do jednej funkcji
-
 function App() {
   const [peopleData, setPeopleData] = useState<any>();
   const [starshipsData, setStarshipsData] = useState<any>();

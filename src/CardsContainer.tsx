@@ -1,18 +1,18 @@
 import React from "react";
+import { BattleData, Contestant } from "./types";
+import Card from "./Card";
 
 type CardsContainerProps = {
-  playerOne: any;
-  playerTwo: any;
+  battleData: BattleData;
 };
 
-const CardsContainer = ({ playerOne, playerTwo }: CardsContainerProps) => {
-  console.log(playerOne);
-  console.log(playerTwo);
-
+const CardsContainer = ({ battleData }: CardsContainerProps) => {
+  const { battleContestants, type } = battleData;
   return (
     <div>
-      <h2>Elo</h2>
-      <h3>Elo</h3>
+      {battleContestants.map((contestant: Contestant, i: number) => (
+        <Card key={i} type={type} contestant={contestant} />
+      ))}
     </div>
   );
 };
