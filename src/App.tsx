@@ -1,44 +1,33 @@
-import React, { useEffect, useState } from "react";
-import BattleContainer from "./BattleContainer";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import "./App.css";
+import BattleContainer from "./BattleContainer";
+import { Person, Starship } from "./types";
 
 function App() {
-  const [peopleData, setPeopleData] = useState<any>();
-  const [starshipsData, setStarshipsData] = useState<any>();
+  const [peopleData, setPeopleData] = useState<Person[]>([]);
+  const [starshipsData, setStarshipsData] = useState<Starship[]>([]);
 
-  async function getStarshipsData() {
-    let results: any = [];
-    let url = "https://swapi.co/api/starships/";
-
-    do {
-      const res = await fetch(url);
-      const data = await res.json();
-      url = data.next;
-      results = [...results, ...data.results];
-      setStarshipsData(results);
-    } while (url);
-
-    return results;
-  }
-
-  async function getPeopleData() {
-    let results: any = [];
-    let url = "https://swapi.co/api/people/";
+  async function getData(
+    url: string,
+    setDataFunction:
+      | Dispatch<SetStateAction<Person[]>>
+      | Dispatch<SetStateAction<Starship[]>>
+  ) {
+    let results: Person[] & Starship[] = [];
+    let urlToFetch: string = url;
 
     do {
-      const res = await fetch(url);
+      const res = await fetch(urlToFetch);
       const data = await res.json();
-      url = data.next;
+      urlToFetch = data.next;
       results = [...results, ...data.results];
-      setPeopleData(results);
-    } while (url);
-
-    return results;
+      setDataFunction(results);
+    } while (urlToFetch);
   }
 
   useEffect(() => {
-    getPeopleData();
-    getStarshipsData();
+    getData("https://swapi.co/api/people/", setPeopleData);
+    getData("https://swapi.co/api/starships/", setStarshipsData);
   }, []);
 
   return (

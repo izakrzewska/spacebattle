@@ -8,6 +8,8 @@ export interface BattleData {
   type: ContestantType;
 }
 
+export type Winner = Contestant | "TIE";
+
 export interface Person {
   name: string;
   height: string;
