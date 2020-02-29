@@ -1,5 +1,11 @@
 import React from "react";
-import { Contestant, ContestantType, Person, Starship } from "./types";
+import {
+  Contestant,
+  ContestantType,
+  Person,
+  Starship,
+  ContestantValues
+} from "./types";
 import PersonCardContent from "./PersonCardContent";
 import StarshipCardContent from "./StarshipCardContent";
 
@@ -12,11 +18,11 @@ type CardProps = {
 const Card: React.SFC<CardProps> = ({ contestant, type, isWinningCard }) => {
   let content;
   switch (type) {
-    case "people": {
+    case ContestantValues.PEOPLE: {
       content = <PersonCardContent person={contestant as Person} />;
       break;
     }
-    case "starships": {
+    case ContestantValues.STARSHIPS: {
       content = <StarshipCardContent starship={contestant as Starship} />;
       break;
     }

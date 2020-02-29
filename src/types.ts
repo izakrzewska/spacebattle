@@ -1,5 +1,7 @@
 export type ContestantType = "people" | "starships";
 
+export type ResultType = "playerOne" | "playerTwo" | "tie";
+
 export type Contestant = Starship | Person;
 export type BattleContestants = Contestant[];
 
@@ -8,7 +10,21 @@ export interface BattleData {
   type: ContestantType;
 }
 
-export type Winner = Contestant | "TIE";
+export enum ContestantValues {
+  PEOPLE = "people",
+  STARSHIPS = "starships"
+}
+
+export enum WinnerValues {
+  PLAYER_ONE = "playerOne",
+  PLAYER_TWO = "playerTwo",
+  TIE = "tie"
+}
+
+export interface Score {
+  playerOne: number;
+  playerTwo: number;
+}
 
 export interface Person {
   name: string;
