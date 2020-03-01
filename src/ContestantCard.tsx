@@ -8,14 +8,20 @@ import {
 } from "./types";
 import PersonCardContent from "./PersonCardContent";
 import StarshipCardContent from "./StarshipCardContent";
+import { Card, CardHeader, CardContent } from "@material-ui/core";
+import "./ContestantCard.css";
 
-type CardProps = {
+type ContestantCardProps = {
   contestant: Contestant;
   type: ContestantType;
   isWinningCard: boolean;
 };
 
-const Card: React.SFC<CardProps> = ({ contestant, type, isWinningCard }) => {
+const ContestantCard: React.SFC<ContestantCardProps> = ({
+  contestant,
+  type,
+  isWinningCard
+}) => {
   let content;
   switch (type) {
     case ContestantValues.PEOPLE: {
@@ -29,11 +35,13 @@ const Card: React.SFC<CardProps> = ({ contestant, type, isWinningCard }) => {
   }
 
   return (
-    <div>
-      <p>{isWinningCard && "THIS IS A WINNING CARD!"}</p>
-      <ul>{content}</ul>
-    </div>
+    <Card>
+      <CardHeader title={isWinningCard && "THIS IS A WINNING CARD!"} />
+      <CardContent>
+        <ul className="list">{content}</ul>
+      </CardContent>
+    </Card>
   );
 };
 
-export default Card;
+export default ContestantCard;

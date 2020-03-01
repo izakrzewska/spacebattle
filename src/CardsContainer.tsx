@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import ContestantCard from "./ContestantCard";
 import "./CardsContainer.css";
 import { BattleData, Contestant } from "./types";
 
@@ -22,17 +22,15 @@ const CardsContainer: React.SFC<CardsContainerProps> = ({
   };
 
   return (
-    <div>
-      <div className="cardsContainer">
-        {battleContestants.map((contestant: Contestant, i: number) => (
-          <Card
-            key={i}
-            type={type}
-            contestant={contestant}
-            isWinningCard={checkIfWinner(contestant)}
-          />
-        ))}
-      </div>
+    <div className="cardsContainer">
+      {battleContestants.map((contestant: Contestant, i: number) => (
+        <ContestantCard
+          key={i}
+          type={type}
+          contestant={contestant}
+          isWinningCard={checkIfWinner(contestant)}
+        />
+      ))}
     </div>
   );
 };

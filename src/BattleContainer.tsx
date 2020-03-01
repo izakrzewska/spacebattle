@@ -26,7 +26,6 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
 }) => {
   const [battleData, setBattleData] = useState<BattleData>();
   const [gameWinner, setGameWinner] = useState<Contestant>();
-  const [result, setResult] = useState<ResultType | undefined>();
   const [isWinnerKnown, setIsWinnerKnown] = useState<boolean>(false);
   const [score, setScore] = useState<Score>({ playerOne: 0, playerTwo: 0 });
   const [isTie, setIsTie] = useState<boolean>(false);
@@ -83,16 +82,20 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
 
   const evaluateWinner = (
     playerOneValue: string,
-    playerTwoValue: string
+    playerTwoValue: string,
+    playerOne: Contestant,
+    playerTwo: Contestant
   ): ResultType => {
     if (getValue(playerOneValue) > getValue(playerTwoValue)) {
-      setResult(WinnerValues.PLAYER_ONE);
+      updateScore(WinnerValues.PLAYER_ONE);
+      setGameWinner(playerOne);
       return WinnerValues.PLAYER_ONE;
     } else if (getValue(playerOneValue) < getValue(playerTwoValue)) {
-      setResult(WinnerValues.PLAYER_TWO);
+      updateScore(WinnerValues.PLAYER_TWO);
+      setGameWinner(playerTwo);
       return WinnerValues.PLAYER_TWO;
     } else {
-      setResult(WinnerValues.TIE);
+      setIsTie(true);
       return WinnerValues.TIE;
     }
   };
@@ -101,7 +104,7 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
     return value === "unknown" ? 1 : Number(value);
   };
 
-  const updateScore = (result: ResultType | undefined): void => {
+  const updateScore = (result: ResultType): void => {
     switch (result) {
       case WinnerValues.PLAYER_ONE: {
         setScore({
@@ -132,7 +135,8 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
 
         const [playerOneMass, playerTwoMass] = [playerOne.mass, playerTwo.mass];
 
-        evaluateWinner(playerOneMass, playerTwoMass);
+        evaluateWinner(playerOneMass, playerTwoMass, playerOne, playerTwo);
+
         break;
       }
       case ContestantValues.STARSHIPS: {
@@ -143,23 +147,11 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
 
         const [playerOneCrew, playerTwoCrew] = [playerOne.crew, playerTwo.crew];
 
-        evaluateWinner(playerOneCrew, playerTwoCrew);
-        break;
-      }
-    }
-
-    switch (result) {
-      case WinnerValues.PLAYER_ONE: {
-        setGameWinner(battleContestants[0]);
-        break;
-      }
-      case WinnerValues.PLAYER_TWO: {
-        setGameWinner(battleContestants[1]);
+        evaluateWinner(playerOneCrew, playerTwoCrew, playerOne, playerTwo);
         break;
       }
     }
     setIsWinnerKnown(true);
-    updateScore(result);
   };
 
   const play = (type: ContestantType) => {
