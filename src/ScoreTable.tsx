@@ -1,5 +1,6 @@
 import React from "react";
 import { Score } from "./types";
+import "./ScoreTable";
 
 type ScoreTableProps = {
   score: Score;
@@ -8,10 +9,10 @@ type ScoreTableProps = {
 
 const ScoreTable: React.SFC<ScoreTableProps> = ({ score, isTie }) => {
   return (
-    <div>
+    <div className="scoreTable">
       <p>Player One score: {score.playerOne}</p>
       <p>Player Two score: {score.playerTwo}</p>
-      <p> {isTie ? "It is a tie, play again!" : ""}</p>
+      {isTie && <p>It is a tie, play again!</p>}
     </div>
   );
 };

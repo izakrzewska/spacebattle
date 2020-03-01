@@ -27,21 +27,21 @@ const StarshipCardContent: React.SFC<StarshipCardContentProps> = ({
   } = starship;
   return (
     <>
-      <li>{`Name: ${name}`}</li>
-      <li>{`Model: ${model}`}</li>
-      <li>{`Manufacturer: ${manufacturer}`}</li>
-      <li>{`Cost in credits: ${cost_in_credits}`}</li>
-      <li>{`Length: ${length}`}</li>
-      <li>{`Max atmosphere speed: ${max_atmosphering_speed}`}</li>
-      <li>{`Crew: ${crew}`}</li>
-      <li>{`Passengers: ${passengers}`}</li>
-      <li>{`Cargo capacity: ${cargo_capacity}`}</li>
-      <li>{`Consumables: ${consumables}`}</li>
-      <li>{`Hyperdrive rating: ${hyperdrive_rating}`}</li>
-      <li>{`MGLT: ${MGLT}`}</li>
-      <li>{`Starship class: ${starship_class}`}</li>
-      <li>{`Number of pilots: ${pilots.length}`}</li>
-      <li>{`Number of films: ${films.length}`}</li>
+      <li id="name">{`Name: ${name}`}</li>
+      <li id="model">{`Model: ${model}`}</li>
+      <li id="manufacturer">{`Manufacturer: ${manufacturer}`}</li>
+      <li id="cost_in_credits">{`Cost in credits: ${cost_in_credits}`}</li>
+      <li id="length">{`Length: ${length}`}</li>
+      <li id="max_atmosphering_speed">{`Max atmosphering speed: ${max_atmosphering_speed}`}</li>
+      <li id="crew">{`Crew: ${crew}`}</li>
+      <li id="passengers">{`Passengers: ${passengers}`}</li>
+      <li id="cargo_capacity">{`Cargo capacity: ${cargo_capacity}`}</li>
+      <li id="consumables">{`Consumables: ${consumables}`}</li>
+      <li id="hyperdrive_rating">{`Hyperdrive rating: ${hyperdrive_rating}`}</li>
+      <li id="MGLT">{`MGLT: ${MGLT}`}</li>
+      <li id="starship_class">{`Starship class: ${starship_class}`}</li>
+      <li id="pilots">{`Number of pilots: ${pilots.length}`}</li>
+      <li id="films">{`Number of films: ${films.length}`}</li>
     </>
   );
 };
