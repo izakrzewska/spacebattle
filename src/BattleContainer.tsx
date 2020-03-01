@@ -80,30 +80,6 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
     return { battleContestants, type };
   };
 
-  const evaluateWinner = (
-    playerOneValue: string,
-    playerTwoValue: string,
-    playerOne: Contestant,
-    playerTwo: Contestant
-  ): ResultType => {
-    if (getValue(playerOneValue) > getValue(playerTwoValue)) {
-      updateScore(WinnerValues.PLAYER_ONE);
-      setGameWinner(playerOne);
-      return WinnerValues.PLAYER_ONE;
-    } else if (getValue(playerOneValue) < getValue(playerTwoValue)) {
-      updateScore(WinnerValues.PLAYER_TWO);
-      setGameWinner(playerTwo);
-      return WinnerValues.PLAYER_TWO;
-    } else {
-      setIsTie(true);
-      return WinnerValues.TIE;
-    }
-  };
-
-  const getValue = (value: string): number => {
-    return value === "unknown" ? 1 : Number(value);
-  };
-
   const updateScore = (result: ResultType): void => {
     switch (result) {
       case WinnerValues.PLAYER_ONE: {
@@ -123,41 +99,45 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
     }
   };
 
-  const getWinner = (battleData: BattleData): void => {
-    const { type, battleContestants } = battleData;
+  const getGamewinner = (battleData: BattleData): void => {
+    const { battleContestants } = battleData;
 
-    switch (type) {
-      case ContestantValues.PEOPLE: {
-        const [playerOne, playerTwo] = [
-          battleContestants[0] as Person,
-          battleContestants[1] as Person
-        ];
+    const [playerOnePeople, playerTwoPeople] = [
+      battleContestants[0] as Person,
+      battleContestants[1] as Person
+    ];
 
-        const [playerOneMass, playerTwoMass] = [playerOne.mass, playerTwo.mass];
+    const [playerOneStarships, playerTwoStarships] = [
+      battleContestants[0] as Starship,
+      battleContestants[1] as Starship
+    ];
 
-        evaluateWinner(playerOneMass, playerTwoMass, playerOne, playerTwo);
+    const getValue = (value: string): number => {
+      return value === "unknown" ? 0 : Number(value);
+    };
 
-        break;
-      }
-      case ContestantValues.STARSHIPS: {
-        const [playerOne, playerTwo] = [
-          battleContestants[0] as Starship,
-          battleContestants[1] as Starship
-        ];
+    const playerOneValue =
+      getValue(playerOnePeople.mass) || getValue(playerOneStarships.crew);
+    const playerTwoValue =
+      getValue(playerTwoPeople.mass) || getValue(playerTwoStarships.crew);
 
-        const [playerOneCrew, playerTwoCrew] = [playerOne.crew, playerTwo.crew];
-
-        evaluateWinner(playerOneCrew, playerTwoCrew, playerOne, playerTwo);
-        break;
-      }
+    if (playerOneValue > playerTwoValue) {
+      updateScore(WinnerValues.PLAYER_ONE);
+      setGameWinner(battleContestants[0]);
+    } else if (playerOneValue < playerTwoValue) {
+      updateScore(WinnerValues.PLAYER_TWO);
+      setGameWinner(battleContestants[1]);
+    } else {
+      setIsTie(true);
     }
+
     setIsWinnerKnown(true);
   };
 
   const play = (type: ContestantType) => {
     const data: BattleData = getDataForTheBattle(type);
     setBattleData(data);
-    getWinner(data);
+    getGamewinner(data);
   };
 
   const playAgain = (): void => {
