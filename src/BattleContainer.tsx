@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CardsContainer from "./CardsContainer";
 import ScoreTable from "./ScoreTable";
+import Button from "./Button";
 import {
   BattleContestants,
   BattleData,
@@ -134,7 +135,7 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
     setIsWinnerKnown(true);
   };
 
-  const play = (type: ContestantType) => {
+  const play = (type: ContestantType): void => {
     const data: BattleData = getDataForTheBattle(type);
     setBattleData(data);
     getGamewinner(data);
@@ -149,24 +150,28 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
   const dataAvailabilityInfo = `There are ${peopleData.length} people and ${starshipsData.length} starships ready for the battle`;
 
   const playAgainButton = (
-    <button onClick={() => playAgain()}>PLAY AGAIN</button>
+    <Button text="PLAY AGAIN" onClick={() => playAgain()} />
   );
   const pickBattleTypeButtons = (
     <>
-      <button onClick={(): void => play(ContestantValues.PEOPLE)}>
-        PLAY PEOPLE
-      </button>
-      <button onClick={(): void => play(ContestantValues.STARSHIPS)}>
-        PLAY STARSHIPS
-      </button>
+      <Button
+        text="PLAY PEOPLE"
+        onClick={() => play(ContestantValues.PEOPLE)}
+      />
+      <Button
+        text="PLAY STARSHIPS"
+        onClick={(): void => play(ContestantValues.STARSHIPS)}
+      />
     </>
   );
 
   return (
-    <div>
+    <div className="battleContainer">
       <h1>Welcome to the space battle</h1>
-      <p>{dataAvailabilityInfo}</p>
-      <div>{isWinnerKnown ? playAgainButton : pickBattleTypeButtons}</div>
+      <p id="dataAvailability">{dataAvailabilityInfo}</p>
+      <div className="buttonsSection">
+        {isWinnerKnown ? playAgainButton : pickBattleTypeButtons}
+      </div>
       {!!battleData && (
         <CardsContainer battleData={battleData} gameWinner={gameWinner} />
       )}
