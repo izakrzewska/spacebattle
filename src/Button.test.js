@@ -6,12 +6,17 @@ const renderComponent = (text, onClick) => {
   return shallow(<Button text={text} onClick={onClick} />);
 };
 
-describe("ScoreTable", () => {
+describe("Button", () => {
   const mockedOnClick = jest.fn();
-  const basicComponent = renderComponent("text", mockedOnClick);
-  //TODO: test for text
-  it("fires onclick funtion", () => {
+  const mockedText = "mocked Text";
+  const basicComponent = renderComponent(mockedText, mockedOnClick);
+
+  it("fires onclick funtion when clicked", () => {
     basicComponent.simulate("click");
     expect(mockedOnClick).toHaveBeenCalled();
+  });
+
+  it("sets text inside the button", () => {
+    expect(basicComponent.find("button").text()).toEqual(mockedText);
   });
 });

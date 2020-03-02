@@ -118,9 +118,11 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
     };
 
     const playerOneValue =
-      getValue(playerOnePeople.mass) || getValue(playerOneStarships.crew);
+      ((playerOnePeople as Person) && getValue(playerOnePeople.mass)) ||
+      ((playerOneStarships as Starship) && getValue(playerOneStarships.crew));
     const playerTwoValue =
-      getValue(playerTwoPeople.mass) || getValue(playerTwoStarships.crew);
+      ((playerTwoPeople as Person) && getValue(playerTwoPeople.mass)) ||
+      ((playerTwoStarships as Starship) && getValue(playerTwoStarships.crew));
 
     if (playerOneValue > playerTwoValue) {
       updateScore(WinnerValues.PLAYER_ONE);
@@ -150,15 +152,17 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
   const dataAvailabilityInfo = `There are ${peopleData.length} people and ${starshipsData.length} starships ready for the battle`;
 
   const playAgainButton = (
-    <Button text="PLAY AGAIN" onClick={() => playAgain()} />
+    <Button id="play-again" text="PLAY AGAIN" onClick={() => playAgain()} />
   );
   const pickBattleTypeButtons = (
     <>
       <Button
+        id="people"
         text="PLAY PEOPLE"
         onClick={() => play(ContestantValues.PEOPLE)}
       />
       <Button
+        id="starships"
         text="PLAY STARSHIPS"
         onClick={(): void => play(ContestantValues.STARSHIPS)}
       />
