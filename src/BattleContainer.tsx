@@ -114,7 +114,7 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
     ];
 
     const getValue = (value: string): number => {
-      return value === "unknown" ? 0 : Number(value);
+      return value === "unknown" ? -1 : Number(value);
     };
 
     const playerOneValue =

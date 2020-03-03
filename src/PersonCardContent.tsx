@@ -24,7 +24,7 @@ const PersonCardContent: React.SFC<PersonCardContentProps> = ({ person }) => {
     <>
       <li id="name">{`Name: ${name}`}</li>
       <li id="height">{`Height: ${height}`}</li>
-      <li id="mass">{`Mass: ${mass}`}</li>
+      <li style={{ fontWeight: "bold" }} id="mass">{`Mass: ${mass}`}</li>
       <li id="hair_color">{`Hair color: ${hair_color}`}</li>
       <li id="skin_color">{`Skin color: ${skin_color}`}</li>
       <li id="eye_color">{`Eye color: ${eye_color}`}</li>

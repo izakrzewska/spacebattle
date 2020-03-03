@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import "./App.css";
 import BattleContainer from "./BattleContainer";
 import { Person, Starship } from "./types";
-
 function App() {
   const [peopleData, setPeopleData] = useState<Person[]>([]);
   const [starshipsData, setStarshipsData] = useState<Starship[]>([]);
@@ -32,11 +31,13 @@ function App() {
 
   return (
     <div className="App">
-      {peopleData && starshipsData && (
+      {peopleData.length >= 10 && starshipsData.length >= 10 ? (
         <BattleContainer
           peopleData={peopleData}
           starshipsData={starshipsData}
         />
+      ) : (
+        <p>Loading data...</p>
       )}
     </div>
   );

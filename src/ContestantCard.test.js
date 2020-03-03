@@ -34,7 +34,7 @@ describe("Contestant Card", () => {
       it("renders card header with the proper information", () => {
         component = renderComponent(mockedPersonOne, "people", true);
         const header = component.find(CardHeader);
-        expect(header.prop("title")).toEqual("THIS IS A WINNING CARD!");
+        expect(header.prop("title")).toEqual("WINNER");
       });
     });
 

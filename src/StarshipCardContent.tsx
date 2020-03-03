@@ -33,7 +33,7 @@ const StarshipCardContent: React.SFC<StarshipCardContentProps> = ({
       <li id="cost_in_credits">{`Cost in credits: ${cost_in_credits}`}</li>
       <li id="length">{`Length: ${length}`}</li>
       <li id="max_atmosphering_speed">{`Max atmosphering speed: ${max_atmosphering_speed}`}</li>
-      <li id="crew">{`Crew: ${crew}`}</li>
+      <li style={{ fontWeight: "bold" }} id="crew">{`Crew: ${crew}`}</li>
       <li id="passengers">{`Passengers: ${passengers}`}</li>
       <li id="cargo_capacity">{`Cargo capacity: ${cargo_capacity}`}</li>
       <li id="consumables">{`Consumables: ${consumables}`}</li>

@@ -34,11 +34,17 @@ const ContestantCard: React.SFC<ContestantCardProps> = ({
     }
   }
 
+  const noData = <p>Sorry, something went wrong. Play again.</p>;
+
   return (
     <Card>
-      <CardHeader title={isWinningCard && "THIS IS A WINNING CARD!"} />
+      <CardHeader title={isWinningCard && "WINNER"} />
       <CardContent>
-        <ul className="list">{content}</ul>
+        {contestant === undefined ? (
+          noData
+        ) : (
+          <ul className="list">{content}</ul>
+        )}
       </CardContent>
     </Card>
   );

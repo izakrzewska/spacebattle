@@ -14,9 +14,6 @@ const renderComponent = (peopleData, starshipsData) => {
 };
 
 describe("Battle Container", () => {
-  const setState = jest.fn();
-  const useStateSpy = jest.spyOn(React, "useState");
-  useStateSpy.mockImplementation(init => [init, setState]);
   const basicComponent = renderComponent(mockedPeopleData, mockedStarshipsData);
 
   afterEach(() => {

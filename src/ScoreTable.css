@@ -1,2 +1,7 @@
 .scoreTable {
+  margin-top: 50px;
+}
+
+.tie {
+  font-weight: bold;
 }

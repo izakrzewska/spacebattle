@@ -1,4 +1,5 @@
 import React from "react";
+import "./Button.css";
 
 type ButtonProps = {
   text: any;
@@ -7,7 +8,7 @@ type ButtonProps = {
 };
 
 const Button: React.SFC<ButtonProps> = ({ text, onClick, id }) => (
-  <button id={id} onClick={onClick} type="button">
+  <button className="button" id={id} onClick={onClick} type="button">
     {text}
   </button>
 );
