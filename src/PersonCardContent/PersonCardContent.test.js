@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
-import { mockedPersonOne } from "./mockData";
+import { mockedPersonOne } from "../mockData";
 import PersonCardContent from "./PersonCardContent";
 
 const renderComponent = person => {

@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import "./App.css";
-import BattleContainer from "./BattleContainer";
+import BattleContainer from "./BattleContainer/BattleContainer";
 import { Person, Starship } from "./types";
 function App() {
   const [peopleData, setPeopleData] = useState<Person[]>([]);

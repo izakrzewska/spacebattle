@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import CardsContainer from "./CardsContainer";
-import ScoreTable from "./ScoreTable";
-import Button from "./Button";
+import CardsContainer from "../CardsContainer/CardsContainer";
+import ScoreTable from "../ScoreTable/ScoreTable";
+import Button from "../Button/Button";
 import {
   BattleContestants,
   BattleData,
@@ -13,8 +13,8 @@ import {
   ContestantValues,
   WinnerValues,
   ResultType
-} from "./types";
-import { getRandomBetweenRange } from "./utils";
+} from "../types";
+import { getRandomBetweenRange } from "../utils";
 
 type BattleContainerProps = {
   peopleData: Person[];

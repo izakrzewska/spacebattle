@@ -1,5 +1,5 @@
 import React from "react";
-import { Starship } from "./types";
+import { Starship } from "../types";
 
 type StarshipCardContentProps = {
   starship: Starship;

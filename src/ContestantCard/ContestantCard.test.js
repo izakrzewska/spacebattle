@@ -2,9 +2,9 @@ import { Card, CardContent, CardHeader } from "@material-ui/core";
 import { shallow } from "enzyme";
 import React from "react";
 import ContestantCard from "./ContestantCard";
-import { mockedPersonOne, mockedStarshipOne } from "./mockData";
-import PersonCardContent from "./PersonCardContent";
-import StarshipCardContent from "./StarshipCardContent";
+import { mockedPersonOne, mockedStarshipOne } from "../mockData";
+import PersonCardContent from "../PersonCardContent/PersonCardContent";
+import StarshipCardContent from "../StarshipCardContent/StarshipCardContent";
 
 const renderComponent = (contestant, type, isWinningCard) => {
   return shallow(

@@ -2,10 +2,10 @@ import { act } from "@testing-library/react";
 import { shallow } from "enzyme";
 import React from "react";
 import BattleContainer from "./BattleContainer";
-import Button from "./Button";
-import CardsContainer from "./CardsContainer";
-import { mockedPeopleData, mockedStarshipsData } from "./mockData";
-import ScoreTable from "./ScoreTable";
+import Button from "../Button/Button";
+import CardsContainer from "../CardsContainer/CardsContainer";
+import { mockedPeopleData, mockedStarshipsData } from "../mockData";
+import ScoreTable from "../ScoreTable";
 
 const renderComponent = (peopleData, starshipsData) => {
   return shallow(

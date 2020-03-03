@@ -5,9 +5,9 @@ import {
   Person,
   Starship,
   ContestantValues
-} from "./types";
-import PersonCardContent from "./PersonCardContent";
-import StarshipCardContent from "./StarshipCardContent";
+} from "../types";
+import PersonCardContent from "../PersonCardContent/PersonCardContent";
+import StarshipCardContent from "../StarshipCardContent/StarshipCardContent";
 import { Card, CardHeader, CardContent } from "@material-ui/core";
 import "./ContestantCard.css";
 

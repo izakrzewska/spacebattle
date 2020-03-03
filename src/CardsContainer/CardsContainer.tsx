@@ -1,7 +1,7 @@
 import React from "react";
-import ContestantCard from "./ContestantCard";
+import ContestantCard from "../ContestantCard/ContestantCard";
 import "./CardsContainer.css";
-import { BattleData, Contestant } from "./types";
+import { BattleData, Contestant } from "../types";
 
 type CardsContainerProps = {
   battleData: BattleData;

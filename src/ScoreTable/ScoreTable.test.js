@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
-import { mockedStore } from "./mockData";
+import { mockedStore } from "../mockData";
 import ScoreTable from "./ScoreTable";
 
 const renderComponent = (score, isTie) => {

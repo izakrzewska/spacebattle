@@ -1,7 +1,7 @@
 import { shallow } from "enzyme";
 import React from "react";
-import { mockedStarshipOne } from "./mockData";
-import StarshipCardContent from "./StarshipCardContent";
+import { mockedStarshipOne } from "../mockData";
+import StarshipCardContent from "../StarshipCardContent";
 
 const renderComponent = starship => {
   return shallow(<StarshipCardContent starship={starship} />);
