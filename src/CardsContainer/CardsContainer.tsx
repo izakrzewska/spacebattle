@@ -1,11 +1,11 @@
 import React from "react";
 import ContestantCard from "../ContestantCard/ContestantCard";
-import "./CardsContainer.css";
 import { BattleData, Contestant } from "../types";
+import "./CardsContainer.css";
 
 type CardsContainerProps = {
   battleData: BattleData;
-  gameWinner: Contestant | undefined;
+  gameWinner: Contestant | null;
 };
 
 const CardsContainer: React.SFC<CardsContainerProps> = ({

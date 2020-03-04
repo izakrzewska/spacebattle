@@ -1,18 +1,18 @@
 import React, { useState } from "react";
+import Button from "../Button/Button";
 import CardsContainer from "../CardsContainer/CardsContainer";
 import ScoreTable from "../ScoreTable/ScoreTable";
-import Button from "../Button/Button";
 import {
   BattleContestants,
   BattleData,
   Contestant,
   ContestantType,
+  ContestantValues,
   Person,
+  ResultType,
   Score,
   Starship,
-  ContestantValues,
-  WinnerValues,
-  ResultType
+  WinnerValues
 } from "../types";
 import { getRandomBetweenRange } from "../utils";
 
@@ -26,7 +26,7 @@ const BattleContainer: React.SFC<BattleContainerProps> = ({
   starshipsData
 }) => {
   const [battleData, setBattleData] = useState<BattleData>();
-  const [gameWinner, setGameWinner] = useState<Contestant>();
+  const [gameWinner, setGameWinner] = useState<Contestant | null>(null);
   const [isWinnerKnown, setIsWinnerKnown] = useState<boolean>(false);
   const [score, setScore] = useState<Score>({ playerOne: 0, playerTwo: 0 });
   const [isTie, setIsTie] = useState<boolean>(false);

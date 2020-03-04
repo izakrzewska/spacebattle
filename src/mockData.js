@@ -88,6 +88,24 @@ const mockedStarshipFive = {
   films: ["film1", "film2", "film3"]
 };
 
+const mockedStarshipFiveTie = {
+  name: "name",
+  model: "model",
+  manufacturer: "manufacturer",
+  cost_in_credits: "cost_in_credits",
+  length: "length",
+  max_atmosphering_speed: "max_atmosphering_speed",
+  crew: "12",
+  passengers: "passengers",
+  cargo_capacity: "cargo_capacity",
+  consumables: "consumables",
+  hyperdrive_rating: "hyperdrive_rating",
+  MGLT: "MGLT",
+  starship_class: "starship_class",
+  pilots: ["pilot1", "pilot2"],
+  films: ["film1", "film2", "film3"]
+};
+
 export const mockedPersonOne = {
   name: "name",
   height: "height",
@@ -163,6 +181,21 @@ const mockedPersonFive = {
   starships: ["starship1", "starship2"]
 };
 
+const mockedPersonFiveTie = {
+  name: "name",
+  height: "height",
+  mass: "12",
+  hair_color: "hair_color",
+  skin_color: "skin_color",
+  eye_color: "eye_color",
+  birth_year: "birth_year",
+  gender: "gender",
+  films: ["film1", "film2", "film3"],
+  species: ["species1", "species2"],
+  vehicles: ["vehicle1", "vehicle2", "vehicle3"],
+  starships: ["starship1", "starship2"]
+};
+
 export const mockedPeopleData = [
   mockedPersonOne,
   mockedPersonTwo,
@@ -188,3 +221,13 @@ export const mockedStore = {
   playerOne: 0,
   playerTwo: 0
 };
+
+export const mockedPeopleTieContestants = [
+  mockedPersonFive,
+  mockedPersonFiveTie
+];
+
+export const mockedStarshipsTieContestants = [
+  mockedStarshipFive,
+  mockedStarshipFiveTie
+];
