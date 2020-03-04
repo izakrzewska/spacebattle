@@ -29,6 +29,13 @@ describe("Contestant Card", () => {
     expect(basicComponent.find("ul.list").exists()).toBe(true);
   });
 
+  it("renders info in case of undefined contestant", () => {
+    component = renderComponent(undefined, "people", false);
+    expect(component.find("p").text()).toEqual(
+      "Sorry, something went wrong. Play again."
+    );
+  });
+
   describe("isWinningCard prop", () => {
     describe("when the card wins the game", () => {
       it("renders card header with the proper information", () => {

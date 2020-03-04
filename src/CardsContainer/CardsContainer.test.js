@@ -1,6 +1,6 @@
 import { shallow } from "enzyme";
 import React from "react";
-import CardsContainer from "../CardsContainer";
+import CardsContainer from "./CardsContainer";
 import ContestantCard from "../ContestantCard/ContestantCard";
 import { mockedBattleData, mockedPersonOne } from "../mockData";
 

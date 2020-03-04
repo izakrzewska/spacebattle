@@ -5,7 +5,7 @@ import BattleContainer from "./BattleContainer";
 import Button from "../Button/Button";
 import CardsContainer from "../CardsContainer/CardsContainer";
 import { mockedPeopleData, mockedStarshipsData } from "../mockData";
-import ScoreTable from "../ScoreTable";
+import ScoreTable from "../ScoreTable/ScoreTable";
 
 const renderComponent = (peopleData, starshipsData) => {
   return shallow(
