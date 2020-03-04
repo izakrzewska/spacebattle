@@ -14,13 +14,6 @@ const CardsContainer: React.SFC<CardsContainerProps> = ({
 }) => {
   const { battleContestants, type } = battleData;
 
-  const checkIfWinner = (contestant: Contestant): boolean => {
-    if (gameWinner === contestant) {
-      return true;
-    }
-    return false;
-  };
-
   return (
     <div className="cardsContainer">
       {battleContestants.map((contestant: Contestant, i: number) => (
@@ -28,7 +21,7 @@ const CardsContainer: React.SFC<CardsContainerProps> = ({
           key={i}
           type={type}
           contestant={contestant}
-          isWinningCard={checkIfWinner(contestant)}
+          isWinningCard={contestant === gameWinner}
         />
       ))}
     </div>
